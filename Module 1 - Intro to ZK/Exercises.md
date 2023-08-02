@@ -1,17 +1,35 @@
-# Exercises
+# [Exercises - Intro to ZKP Module 1](#exercises---intro-to-zkp-module-1)
 
-Reference: [Module 1 - Intro to ZK](https://pse-team.notion.site/Module-1-Intro-to-ZK-60814ca60a0142349d96a5d72afe8f55)
+Reference: [Module 1 - Intro to ZKP](https://pse-team.notion.site/Module-1-Intro-to-ZK-60814ca60a0142349d96a5d72afe8f55)
+
+- [Exercises - Intro to ZKP Module 1](#exercises---intro-to-zkp-module-1)
+  - [Comprehension](#comprehension)
+    - [Three-Colouring Graph problem with Hats](#three-colouring-graph-problem-with-hats)
+      - [Sequence diagram for the three-colouring graph problem with hats](#sequence-diagram-for-the-three-colouring-graph-problem-with-hats)
+      - [Explanation of the three-colouring graph problem with hats sequence diagram](#explanation-of-the-three-colouring-graph-problem-with-hats-sequence-diagram)
+      - [Explanation of the three-colouring graph problem with hats in plain English](#explanation-of-the-three-colouring-graph-problem-with-hats-in-plain-english)
+    - [Ali Baba’s Cave analogy](#ali-babas-cave-analogy)
+      - [Sequence diagram for the Ali Baba’s cave analogy](#sequence-diagram-for-the-ali-babas-cave-analogy)
+      - [Explanation of the Ali Baba’s cave analogy sequence diagram](#explanation-of-the-ali-babas-cave-analogy-sequence-diagram)
+      - [Explanation of the Ali Baba’s cave analogy in plain English](#explanation-of-the-ali-babas-cave-analogy-in-plain-english)
+    - [The difference between interactive and non-interactive proofs](#the-difference-between-interactive-and-non-interactive-proofs)
+  - [Modular Arithmetic](#modular-arithmetic)
+  - [Generators](#generators)
+  - [Implementing a Modular Arithmetic Calculator](#implementing-a-modular-arithmetic-calculator)
+    - [Implementation of modularCalculator](#implementation-of-modularcalculator)
 
 
-## **Comprehension**
+## [Comprehension](#comprehension)
 
 Summarize each of the following concepts in a few sentences:
 
-### Three-Colouring Graph problem with Hats
+### [Three-Colouring Graph problem with Hats](#three-colouring-graph-problem-with-hats)
 
 ![Three-Colouring Graph problem with Hats](<https://matthewdgreen.files.wordpress.com/2014/11/12725-hatsminusone.png> "Three-Colouring Graph problem with Hats")
 <sup><sub>***Image Source: https://blog.cryptographyengineering.com/2014/11/27/zero-knowledge-proofs-illustrated-primer/***</sub></sup>
 
+
+ #### [Sequence diagram for the three-colouring graph problem with hats](#sequence-diagram-for-the-three-colouring-graph-problem-with-hats)
 
 ```mermaid
 %%{init: {'theme':'forest'}}%%
@@ -41,7 +59,7 @@ sequenceDiagram
     Note over Prover, Verifier: Valid three-coloring is achieved!
 ```
 
-**Explanation of the above sequence diagram**
+#### [Explanation of the three-colouring graph problem with hats sequence diagram](#explanation-of-the-three-colouring-graph-problem-with-hats-sequence-diagram)
 
 1. The game begins with the Prover and Verifier participating.
 2. The Prover informs the Verifier that they have a valid solution to the Three-Colouring problem, but they want to prove it without revealing the actual colors used.
@@ -54,7 +72,7 @@ sequenceDiagram
 This sequence diagram represents the flow of the Zero-Knowledge Proof process using the Three-Colouring Graph problem with Hats analogy.
 
 
-**Explanation in plain English**
+#### [Explanation of the three-colouring graph problem with hats in plain English](#explanation-of-the-three-colouring-graph-problem-with-hats-in-plain-english)
 
 **Step 1: The Game Begins**
 
@@ -90,10 +108,14 @@ This is what's known as an interactive proof because it involves a bit of to-and
 
 
 
-### Ali Baba’s Cave analogy
+### [Ali Baba’s Cave analogy](#ali-babas-cave-analogy)
 
 ![Ali Baba’s Cave analogy](<https://upload.wikimedia.org/wikipedia/commons/c/cc/Zkip_alibaba2.png> "Ali Baba’s Cave analogy")
+
 <sup><sub>***Image Source: https://upload.wikimedia.org/wikipedia/commons/c/cc/Zkip_alibaba2.png***</sub></sup>
+
+
+#### [Sequence diagram for the Ali Baba’s cave analogy](#sequence-diagram-for-the-ali-babas-cave-analogy)
 
 
 ```mermaid
@@ -126,7 +148,7 @@ sequenceDiagram
 
 ```
 
-**Explanation of the above sequence diagram**
+#### [Explanation of the Ali Baba’s cave analogy sequence diagram](#explanation-of-the-ali-babas-cave-analogy-sequence-diagram)
 
 1. The setup is done, with Bob as the Prover and Alice as the Verifier.
 2. Bob enters the circular cave with paths A and B and chooses one of them secretly.
@@ -140,7 +162,7 @@ sequenceDiagram
 This sequence diagram represents the Zero-Knowledge Proof process using Ali Baba's Cave analogy, where Bob proves to Alice that he knows the secret word without revealing the actual word itself.
 
 
-**Explanation in plain English**
+#### [Explanation of the Ali Baba’s cave analogy in plain English](#explanation-of-the-ali-babas-cave-analogy-in-plain-english)
 
 Let's imagine a circular cave, kind of like a doughnut shape, with an entrance and a secret door. This secret door connects two different paths inside the cave, path A and path B. The trick is, the secret door can only be opened by someone who knows a special secret word.
 
@@ -161,7 +183,7 @@ This whole scenario illustrates three important principles of Zero-Knowledge Pro
 - **Zero Knowledge**: Through this whole process, Alice learns nothing about the secret word itself. The only thing she learns is whether or not Bob likely knows the secret word, based on how many times he successfully comes out from the path she calls.
 
 
-### The difference between interactive and non-interactive proofs
+### [The difference between interactive and non-interactive proofs](#the-difference-between-interactive-and-non-interactive-proofs)
 
 In **Interactive Zero-Knowledge Proofs**, the prover and the verifier get into a sort of conversation. It's like they're playing a game of catch. The prover throws out commitments, then the verifier throws back challenges. The prover responds to these challenges. They keep this up until the verifier is confident that the prover is in the know. The Ali Baba cave story we talked about earlier is a good example of this kind of proof.
 
@@ -176,7 +198,7 @@ There are two main ways to pull off a non-interactive ZKP:
 Non-interactive ZKPs are especially handy when there are a lot of observers who need to check the proof, because it allows for efficient verification without the need for each observer to interact with the prover. However, it does come with some extra assumptions, like the existence of a random oracle or a CRS.
 
 
-## **Modular Arithmetic**
+## [Modular Arithmetic](#modular-arithmetic)
 
 Solve the following problems and gain a practical understanding of modular arithmetic:
 
@@ -200,20 +222,25 @@ If the results of the third and fourth calculations match, they follow a “grou
 **Yes, they follow the group structure**
 
 
-## **Generators**
+## [Generators](#generators)
 
 Consider the cyclic group $(Z12,+\ mod\ 12)$, commonly referred to as the “additive group of integers modulo 12”. Address the following points:
 
 1. What does the term ‘generator’ mean?
-**It is a group element which can generate all the other group elements when repeatedly apply the group operation.**
-1. Can you find a generator for this group?
-**1 is generator**
-1. Are there other generators for this group? If yes, what are they?
-**5, 7, and 11 are the other generators. The full generator set is {1, 5, 7, 11}**
+
+**It is a group element which can generate all the other group elements when you repeatedly apply the group operation.**
+
+2. Can you find a generator for this group?
+
+**The group element 1 is a generator for $(Z12,+\ mod\ 12)$**
+
+3. Are there other generators for this group? If yes, what are they?
+
+**The group elements 5, 7, and 11 are the other generators. The full generator set is {1, 5, 7, 11}**
 
 
 
-## **Implementing a Modular Arithmetic Calculator**
+## [Implementing a Modular Arithmetic Calculator](#implementing-a-modular-arithmetic-calculator)
 
 Your task is to implement a simple modular arithmetic calculator in JavaScript. The calculator should support three operations: addition, subtraction, and multiplication.
 
@@ -242,7 +269,9 @@ modularCalculator('*', 10, 15, 12); // Should return: 6
 
 ```
 
-Here is the modular calculator implementation in JS.
+### [Implementation of modularCalculator](#implementation-of-modularcalculator)
+
+**Here is the code for the modular calculator implementation in JS.**
 
 ```javascript
 function modularCalculator(op, num1, num2, mod) {
