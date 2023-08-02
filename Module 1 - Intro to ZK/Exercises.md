@@ -9,6 +9,9 @@ Summarize each of the following concepts in a few sentences:
 
 ### Three-Colouring Graph problem with Hats
 
+![Three-Colouring Graph problem with Hats](https://matthewdgreen.files.wordpress.com/2014/11/12725-hatsminusone.png)
+
+
 
 **Step 1: The Game Begins**
 
@@ -46,8 +49,55 @@ This is what's known as an interactive proof because it involves a bit of to-and
 
 ### Ali Baba’s Cave analogy
 
-![Ali Baba’s Cave analogy](https://en.wikipedia.org/wiki/Zero-knowledge_proof#/media/File:Zkip_alibaba2.png)
+![Ali Baba’s Cave analogy](https://upload.wikimedia.org/wikipedia/commons/c/cc/Zkip_alibaba2.png)
 
+
+
+```mermaid
+%%{init: {'theme':'forest'}}%%
+sequenceDiagram
+    autonumber
+    title: Ali Baba’s Cave 
+    participant Bob as Bob (Prover)
+    participant Alice as Alice (Verifier)
+
+    Note over Bob: Step 1: Setup
+
+    Alice->>Bob: Step 2: Bob enters the cave
+
+    Note over Bob: Step 3: Bob chooses path A or B
+
+    Alice->>Bob: Step 4: Alice calls out a path
+
+    Note over Bob: Step 5: Bob comes out from the called path
+
+    Alice->>Bob: Step 6: Repeats the process multiple times
+
+    loop Repeated Process
+        Bob->>Alice: Step 7: Bob chooses path A or B
+        Alice->>Bob: Step 8: Alice calls out a path
+        Bob->>Alice: Step 9: Bob comes out from the called path
+    end
+
+    Note over Alice, Bob: Step 10: Increased confidence in secret word knowledge
+
+```
+
+**Explanation of the above sequence diagram**
+
+1. The setup is done, with Bob as the Prover and Alice as the Verifier.
+2. Bob enters the circular cave with paths A and B and chooses one of them secretly.
+3. Without revealing his choice, Bob stands in the chosen path.
+4. Alice walks up to the cave entrance and calls out a path, either A or B, asking Bob to appear from that path.
+5. Bob, who knows the secret word, can open the secret door and come out from the called path, regardless of his initial choice.
+6. To increase confidence, Alice repeats the process multiple times.
+7. In each repetition, Bob chooses a path, Alice calls out a path, and Bob comes out from the called path.
+8. After several repetitions, Alice gains increased confidence that Bob knows the secret word, as it becomes less likely for Bob to guess correctly without knowing the secret word.
+
+This sequence diagram represents the Zero-Knowledge Proof process using Ali Baba's Cave analogy, where Bob proves to Alice that he knows the secret word without revealing the actual word itself.
+
+
+**Explanation in plain English**
 
 Let's imagine a circular cave, kind of like a doughnut shape, with an entrance and a secret door. This secret door connects two different paths inside the cave, path A and path B. The trick is, the secret door can only be opened by someone who knows a special secret word.
 
@@ -87,21 +137,29 @@ Non-interactive ZKPs are especially handy when there are a lot of observers who 
 
 Solve the following problems and gain a practical understanding of modular arithmetic:
 
-1. $7 mod 13$
-**7**   
-2. $15 mod 13$
-**2**
-3. $(7+15) mod 13$
-**9**
-4. $(7 mod 13+15 mod 13) mod 13$
-**9**
+1. $7\ mod\ 13$
+
+**Answer: 7**   
+
+2. $15\ mod\ 13$
+
+**Answer: 2**
+
+3. $(7+15)\ mod\ 13$
+
+**Answer: 9**
+
+4. $(7\ mod\ 13\ +\ 15\ mod\ 13)\ mod\ 13$
+
+**Answer: 9**
+
 If the results of the third and fourth calculations match, they follow a “group structure”. Can you determine if these do?
 **Yes, they follow the group structure**
 
 
 ## **Generators**
 
-Consider the cyclic group $(Z12,+ mod 12)$, commonly referred to as the “additive group of integers modulo 12”. Address the following points:
+Consider the cyclic group $(Z12,+\ mod\ 12)$, commonly referred to as the “additive group of integers modulo 12”. Address the following points:
 
 1. What does the term ‘generator’ mean?
 **It is a group element which can generate all the other group elements when repeatedly apply the group operation.**
@@ -167,4 +225,6 @@ function modularCalculator(op, num1, num2, mod) {
 }
 ```
 
-You can find the full implementation including the test cases atthe repo [github.com/thogiti](https://github.com/thogiti/EFPSEZKFellowSummer). You can the test cases by typing ```npm test ``` in your terminal.
+You can find the full implementation including the test cases atthe repo [github.com/thogiti](https://github.com/thogiti/EFPSEZKFellowSummer). 
+
+You can the test cases by typing ```npm test ``` in your terminal.
