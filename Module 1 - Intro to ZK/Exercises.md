@@ -1,0 +1,170 @@
+# Exercises
+
+Reference: [Module 1 - Intro to ZK](https://pse-team.notion.site/Module-1-Intro-to-ZK-60814ca60a0142349d96a5d72afe8f55)
+
+
+## **Comprehension**
+
+Summarize each of the following concepts in a few sentences:
+
+### Three-Colouring Graph problem with Hats
+
+
+**Step 1: The Game Begins**
+
+Picture this: We've got a network of points all connected together, kind of like a spider's web or a really complicated graph. The task is to color each point so that no two points that are connected have the same color, and we can only use three colors. This is what's known as a Three-Colouring problem.
+
+**Step 2: I've Got a Secret**
+
+So, let's say I've cracked it (Prover). I've managed to color all the points following the rules. But, I don't want to just show you my solution straight off - I want to prove to you that I've got a valid solution without giving away the game and telling you what colors I used for each point.
+
+**Step 3: Hide and Seek**
+
+Here's my plan: I put a hat on each point to hide its color. You can still see how the points are connected, but you can't see the colors I've chosen.
+
+**Step 4: Your Move**
+
+Your turn (Verifier). You pick any two points that are connected and ask me to lift the hats off these points.
+
+**Step 5: Ta-da!**
+
+I lift the hats off the two points you picked. Now you can see that these two connected points aren't the same color - just like the rules of the Three-Colouring problem say.
+
+**Step 6: Rinse and Repeat**
+
+We play this game a few more times. Each round, I mix up the colors (without messing up the valid three-coloring), put the hats back on, and you pick a different pair of connected points for me to reveal. 
+
+After a few rounds, you start to feel pretty sure that I've got a valid three-color solution to the problem, even though you've never seen the whole solution at once. And there you have it, a Zero-Knowledge Proof - I've proven that I've got a valid solution without giving the game away. 
+
+This is what's known as an interactive proof because it involves a bit of to-and-fro between you and me.
+
+**Completeness**: If I am telling the truth, then you will eventually be convinced (at least with high probability).
+**Soundness**: I can only convince you if I am actually telling the truth.
+**Zero-knowledge**: You don’t learn anything else about my solution.
+
+
+
+### Ali Baba’s Cave analogy
+
+![Ali Baba’s Cave analogy](https://en.wikipedia.org/wiki/Zero-knowledge_proof#/media/File:Zkip_alibaba2.png)
+
+
+Let's imagine a circular cave, kind of like a doughnut shape, with an entrance and a secret door. This secret door connects two different paths inside the cave, path A and path B. The trick is, the secret door can only be opened by someone who knows a special secret word.
+
+Now, picture two people: Bob, who knows the secret word (Prover), and Alice, who wants to be sure that Bob knows the secret word (Verifier). However, Bob doesn't want to tell Alice the secret word (Zero Knowledge).
+
+Here's how it works: Bob goes into the cave first, while Alice waits outside. Bob picks one of the two paths, A or B, to stand in, without revealing his choice to Alice.
+
+Next, Alice walks up to the cave entrance and calls out a path, either A or B, and asks Bob to appear from that path.
+
+Here's the catch: If Bob really knows the secret word, he can open the secret door and come out from whichever path Alice called, no matter which path he initially chose. But if Bob doesn't know the secret word, he can only come out from the path Alice called if he initially chose that path.
+
+Since there are only two paths, Bob has a 50/50 chance of guessing correctly which path Alice will call. To be really sure that Bob knows the secret word, Alice repeats this process many times. Each time they go through this process, it becomes less likely that Bob could successfully guess Alice's calls without knowing the secret word.
+
+This whole scenario illustrates three important principles of Zero-Knowledge Proofs:
+
+- **Completeness**: If Bob truly knows the secret word, he should be able to convince Alice by always coming out from the path she calls.
+- **Soundness**: If Bob doesn't know the secret word, there's a chance he might not be able to convince Alice because he might not be able to come out from the path she calls.
+- **Zero Knowledge**: Through this whole process, Alice learns nothing about the secret word itself. The only thing she learns is whether or not Bob likely knows the secret word, based on how many times he successfully comes out from the path she calls.
+
+
+### The difference between interactive and non-interactive proofs
+
+In **Interactive Zero-Knowledge Proofs**, the prover and the verifier get into a sort of conversation. It's like they're playing a game of catch. The prover throws out commitments, then the verifier throws back challenges. The prover responds to these challenges. They keep this up until the verifier is confident that the prover is in the know. The Ali Baba cave story we talked about earlier is a good example of this kind of proof.
+
+On the flip side, we have **Non-Interactive Zero-Knowledge Proofs**. These don't require any back-and-forth. It's a one-and-done message from the prover to the verifier that convinces the verifier that the prover knows the secret.
+
+There are two main ways to pull off a non-interactive ZKP:
+
+1. **The Fiat-Shamir Heuristic**: Here, the role of the verifier is played by a simulator that uses a hash function. This function, acting like a random fortune teller, is used on all the commitments. The result of this function is then used as the challenge. The prover can't predict what the hash function will come up with before making the commitments, which is what makes this method secure.
+
+2. **Common Reference String (CRS)**: This method uses a random set of symbols, like pulling numbers from a hat, as a common reference string. It's assumed that these random values are available to all parties, but no party can influence what they'll be. The ZKP is then simulated with the random choices from the CRS, and the result should match anyone else checking the protocol transcript.
+
+Non-interactive ZKPs are especially handy when there are a lot of observers who need to check the proof, because it allows for efficient verification without the need for each observer to interact with the prover. However, it does come with some extra assumptions, like the existence of a random oracle or a CRS.
+
+
+## **Modular Arithmetic**
+
+Solve the following problems and gain a practical understanding of modular arithmetic:
+
+1. $7 mod 13$
+**7**   
+2. $15 mod 13$
+**2**
+3. $(7+15) mod 13$
+**9**
+4. $(7 mod 13+15 mod 13) mod 13$
+**9**
+If the results of the third and fourth calculations match, they follow a “group structure”. Can you determine if these do?
+**Yes, they follow the group structure**
+
+
+## **Generators**
+
+Consider the cyclic group $(Z12,+ mod 12)$, commonly referred to as the “additive group of integers modulo 12”. Address the following points:
+
+1. What does the term ‘generator’ mean?
+**It is a group element which can generate all the other group elements when repeatedly apply the group operation.**
+1. Can you find a generator for this group?
+**1 is generator**
+1. Are there other generators for this group? If yes, what are they?
+**5, 7, and 11 are the other generators. The full generator set is {1, 5, 7, 11}**
+
+
+
+## **Implementing a Modular Arithmetic Calculator**
+
+Your task is to implement a simple modular arithmetic calculator in JavaScript. The calculator should support three operations: addition, subtraction, and multiplication.
+
+The function `modularCalculator` should take four parameters:
+
+- A string, `op`, indicating the operation. It will be one of ‘+’, ‘-’, or ‘*’.
+- Two integers, `num1` and `num2`, which are the operands for the operation.
+- An integer, `mod`, which is the modulus.
+
+The function should return the result of performing the indicated operation on `num1` and `num2`, then take the result modulo `mod`.
+
+Remember, the result of subtraction could be negative, and in this case, you should add `mod` to the result to ensure it’s positive.
+
+For addition and multiplication, remember that JavaScript’s % operator gives the remainder, not the modulus, but these will be the same for positive numbers.
+
+**Code Template:**
+
+```javascript
+function modularCalculator(op, num1, num2, mod) {
+    // Your code here
+}
+
+modularCalculator('+', 10, 15, 12); // Should return: 1
+modularCalculator('-', 10, 15, 12); // Should return: 7
+modularCalculator('*', 10, 15, 12); // Should return: 6
+
+```
+
+Here is the modular calculator implementation in JS.
+
+```javascript
+function modularCalculator(op, num1, num2, mod) {
+    let result;
+    switch (op) {
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        default:
+            throw new Error('Invalid operation');
+    }
+    result = result % mod;
+    if (result < 0) {
+        result += mod; // If the result is negative, add `mod` to make it positive
+    }
+    return result;
+}
+```
+
+You can find the full implementation including the test cases atthe repo [github.com/thogiti](https://github.com/thogiti/EFPSEZKFellowSummer). You can the test cases by typing ```npm test ``` in your terminal.
