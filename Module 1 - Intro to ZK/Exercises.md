@@ -9,9 +9,52 @@ Summarize each of the following concepts in a few sentences:
 
 ### Three-Colouring Graph problem with Hats
 
-![Three-Colouring Graph problem with Hats](https://matthewdgreen.files.wordpress.com/2014/11/12725-hatsminusone.png)
+![Three-Colouring Graph problem with Hats](<https://matthewdgreen.files.wordpress.com/2014/11/12725-hatsminusone.png> "Three-Colouring Graph problem with Hats")
+<sup><sub>***Image Source: https://blog.cryptographyengineering.com/2014/11/27/zero-knowledge-proofs-illustrated-primer/***</sub></sup>
 
 
+```mermaid
+%%{init: {'theme':'forest'}}%%
+sequenceDiagram
+    autonumber
+    title: Three-Colouring Graph problem with Hats
+    
+    participant Prover as Prover
+    participant Verifier as Verifier
+
+    
+    Note over Prover: Step 1: The Game Begins
+    
+    Prover->>Verifier: Step 2: I've Got a Secret
+
+    Note over Prover: Step 3: Hide and Seek
+    
+    
+    loop Game Rounds
+        Verifier->>Prover: Step 4: Your Move
+        Prover->>Verifier: Step 5: Ta-da!
+
+    end
+
+    Note over Prover, Verifier: Step 6: Rinse and Repeat
+
+    Note over Prover, Verifier: Valid three-coloring is achieved!
+```
+
+**Explanation of the above sequence diagram**
+
+1. The game begins with the Prover and Verifier participating.
+2. The Prover informs the Verifier that they have a valid solution to the Three-Colouring problem, but they want to prove it without revealing the actual colors used.
+3. The Prover puts hats on each point to hide their colors while keeping the connections visible.
+4. The Verifier picks any two connected points and asks the Prover to reveal the colors of those points.
+5. The Prover reveals the colors of the chosen points, demonstrating that the connected points have different colors as per the Three-Colouring rules.
+6. The game repeats for several rounds, with the Prover shuffling the colors each time and the Verifier picking different pairs of connected points to verify.
+7. After multiple rounds, the Verifier gains confidence that the Prover indeed has a valid three-coloring solution without knowing the exact colors used.
+
+This sequence diagram represents the flow of the Zero-Knowledge Proof process using the Three-Colouring Graph problem with Hats analogy.
+
+
+**Explanation in plain English**
 
 **Step 1: The Game Begins**
 
@@ -49,8 +92,8 @@ This is what's known as an interactive proof because it involves a bit of to-and
 
 ### Ali Baba’s Cave analogy
 
-![Ali Baba’s Cave analogy](https://upload.wikimedia.org/wikipedia/commons/c/cc/Zkip_alibaba2.png)
-
+![Ali Baba’s Cave analogy](<https://upload.wikimedia.org/wikipedia/commons/c/cc/Zkip_alibaba2.png> "Ali Baba’s Cave analogy")
+<sup><sub>***Image Source: https://upload.wikimedia.org/wikipedia/commons/c/cc/Zkip_alibaba2.png***</sub></sup>
 
 
 ```mermaid
