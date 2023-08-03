@@ -1,4 +1,11 @@
+
 # Ethereum Foundation's Privacy Scaling &amp; Explorations (PSE) ZK Fellow Contributor
+
+- [Ethereum Foundation's Privacy Scaling \& Explorations (PSE) ZK Fellow Contributor](#ethereum-foundations-privacy-scaling--explorations-pse-zk-fellow-contributor)
+  - [Summary](#summary)
+  - [Introduction to ZKP Module 1](#introduction-to-zkp-module-1)
+
+## [Summary](#summary)
 
 The Zero Knowledge Proofs (ZKP) program offered by Ethereum Foundation's Privacy Scaling & Explorations (PSE) presents a remarkable opportunity to delve into the captivating realm of Zero-Knowledge Proofs. Under the guidance of the experienced experts at PSE, participants will gain hands-on experience in this cutting-edge field.
 
