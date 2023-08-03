@@ -1,6 +1,7 @@
 - [A Primer for Zero Knowledge Proofs](#a-primer-for-zero-knowledge-proofs)
 - [Thought Experiments](#thought-experiments)
 - [Use-Cases and Applications](#use-cases-and-applications)
+- [Exercises](#exercises)
 
 # [A Primer for Zero Knowledge Proofs](#a-primer-for-zero-knowledge-proofs)
 
@@ -80,3 +81,6 @@ And the beauty of this all is that both parties can verify that the machine lear
 
 Verifiable machine learning is no easy feat - it requires a combination of advanced techniques from cryptography, machine learning, and distributed systems. But it's an active research area and an incredibly exciting field. It opens up a world of possibilities and opportunities for data-driven innovation, and I can't wait to learn more about this field and see where it leads us.
 
+# [Exercises](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%201%20-%20Intro%20to%20ZK/Exercises.md)
+
+You can find some practical hands on learning exercises at [github.com/thogiti/](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%201%20-%20Intro%20to%20ZK/Exercises.md)

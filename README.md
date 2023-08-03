@@ -6,4 +6,4 @@ In the module 1, we will learn the concept of Zero Knowledge Proofs (ZKP), how t
 
 You can find more details at [github.com/thogiti/](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%201%20-%20Intro%20to%20ZK)
 
-
+You can find some practical hands on learning exercises at [github.com/thogiti/](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%201%20-%20Intro%20to%20ZK/Exercises.md)
