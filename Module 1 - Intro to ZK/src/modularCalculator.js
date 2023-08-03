@@ -19,3 +19,5 @@ function modularCalculator(op, num1, num2, mod) {
     }
     return result;
 }
+
+module.exports = { modularCalculator };
