@@ -1,4 +1,8 @@
-# A Primer for Zero Knowledge Proofs
+- [A Primer for Zero Knowledge Proofs](#a-primer-for-zero-knowledge-proofs)
+- [Thought Experiments](#thought-experiments)
+- [Use-Cases and Applications](#use-cases-and-applications)
+
+# [A Primer for Zero Knowledge Proofs](#a-primer-for-zero-knowledge-proofs)
 
 1. What are Zero-Knowledge Proofs?
 2. What are the principles of soundness, completeness, and zero-knowledge?
@@ -29,7 +33,7 @@ In **Interactive Zero-Knowledge Proofs**, the prover and the verifier get into a
 On the flip side, we have **Non-Interactive Zero-Knowledge Proofs**. These don't require any back-and-forth. It's a one-and-done message from the prover to the verifier that convinces the verifier that the prover knows the secret.
 
 
-# Thought Experiments
+# [Thought Experiments](#a-primer-for-zero-knowledge-proofs)
 
 1. Which example did you find most enlightening, and why?
 2. How do these examples demonstrate the principles of zero-knowledge proofs?
@@ -61,7 +65,7 @@ Zero-Knowledge Proofs have numerous potential applications in everyday life. Her
 These daily-life applications demonstrate how ZKPs can provide a powerful tool for maintaining privacy and security in various sectors, from finance to voting, and from blockchain to general data exchange.
 
 
-# Use-Cases and Applications
+# [Use-Cases and Applications](#use-cases-and-applications)
 
 1. Which application of ZKP do you find most intriguing, and why?
 2. Can you imagine any other potential applications of ZKP?

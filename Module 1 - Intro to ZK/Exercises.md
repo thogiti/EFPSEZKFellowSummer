@@ -219,7 +219,7 @@ Solve the following problems and gain a practical understanding of modular arith
 **Answer: 9**
 
 If the results of the third and fourth calculations match, they follow a “group structure”. Can you determine if these do?
-**Yes, they follow the group structure**
+**Yes, they follow the group structure.**
 
 
 ## [Generators](#generators)
@@ -232,11 +232,11 @@ Consider the cyclic group $(Z12,+\ mod\ 12)$, commonly referred to as the “add
 
 2. Can you find a generator for this group?
 
-**The group element 1 is a generator for $(Z12,+\ mod\ 12)$**
+**The group element 1 is a generator for $(Z12,+\ mod\ 12).$**
 
 3. Are there other generators for this group? If yes, what are they?
 
-**The group elements 5, 7, and 11 are the other generators. The full generator set is {1, 5, 7, 11}**
+**The group elements 5, 7, and 11 are the other generators. The full generator set is {1, 5, 7, 11}.**
 
 
 
