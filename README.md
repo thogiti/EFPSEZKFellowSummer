@@ -10,7 +10,8 @@ The program is designed to foster a collaborative learning environment, where pa
 
 This program is a gateway to a new era of privacy and security, where the power of decentralized systems and advanced cryptographic techniques converge. Get ready to embark on this exciting journey into the world of Zero Knowledge Proofs and unlock the potential of this transformative technology.
 
-Here is a brief look into the self learning [curriculum](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/content/images/curriculum.png)
+Here is a brief look into the self learning [curriculum](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/images/curriculum.png)
+
 
 ## [Introduction to ZKP Module 1](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%201%20-%20Intro%20to%20ZK)
 
