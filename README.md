@@ -4,6 +4,7 @@
 - [Ethereum Foundation's Privacy Scaling \& Explorations (PSE) ZK Fellow Contributor](#ethereum-foundations-privacy-scaling--explorations-pse-zk-fellow-contributor)
   - [Summary](#summary)
   - [Introduction to ZKP Module 1](#introduction-to-zkp-module-1)
+- [How to Test](#how-to-test)
 
 ## [Summary](#summary)
 
@@ -27,3 +28,17 @@ In the module 1, we will learn the concept of Zero Knowledge Proofs (ZKP), how t
 You can find more details at [github.com/thogiti/](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%201%20-%20Intro%20to%20ZK)
 
 You can find some practical hands on learning exercises at [github.com/thogiti/](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%201%20-%20Intro%20to%20ZK/Exercises.md)
+
+
+# [How to Test](#how-to-test)
+
+Open a terminal and type ```npm run test``` to run the tests. 
+
+Please make sure you are at the root of working directory (i.e. EFPSEZKFellowSummer).
+
+![Run all tests](images/Run%20all%20tests.png)
+
+
+If you want to run a specific test, you type ```npm test -- test/modularCalculator.test.js```.
+
+![Run a specific test](images/Run%20a%20specific%20test.png)
