@@ -55,10 +55,10 @@ There exists an identity element $\mathcal{O}$ such that for any point $P$ on th
 
 **Answer** The primary advantage of Elliptic Curve Cryptography (ECC) over traditional methods like RSA is that ECC offers the same level of security with smaller keys. This results in less storage and transmission requirements. You can read more about the advantages at [ECC benefits](https://thogiti.github.io/mastering-elliptic-curve-arithmetic-a-comprehensive-guide-with-sagemath-examples/#the-power-of-elliptic-curve-cryptography-ecc). For instance, a 256-bit ECC key offers comparable security to a 3072-bit RSA key. For example, see below NIST table showing the security bit level for RSA VS ECC.
 
-![NIST Security bit level RSA VS ECC](#images/NIST-Security-bit-level-RSA-VS-ECC.png)
+![NIST Security bit level RSA VS ECC](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%203%20-%20Crypto%20Essentials%20Elliptic%20Curves/images/NIST-Security-bit-level-RSA-VS-ECC.png)
 
 
-2. How is the public key in ECC derived from the private key?
+1. How is the public key in ECC derived from the private key?
 
 **Answer** The public key in ECC is derived from the private key by scalar multiplication of the private key with the generator point on the elliptic curve. The generator point is a predefined point on the curve used in the elliptic curve group. The result of this operation is another point on the curve, which is the public key.
 
