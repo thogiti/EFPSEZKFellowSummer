@@ -19,7 +19,14 @@
   "homepage": "https://github.com/thogiti/EFPSEZKFellowSummer#readme",
   "dependencies": {
     "chai": "^4.3.7",
+    "ffjavascript": "^0.2.59",
+    "merkletreejs": "^0.3.10",
     "mocha": "^10.2.0",
+    "moment": "^2.29.4",
+    "poseidon-encryption": "^1.0.2",
     "save-dev": "^0.0.1-security"
+  },
+  "directories": {
+    "test": "test"
   }
 }
