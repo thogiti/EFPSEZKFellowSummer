@@ -31,9 +31,9 @@ You can find more details at [github.com/thogiti/](https://github.com/thogiti/EF
 
 You can find some practical hands on learning exercises at [github.com/thogiti/](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%201%20-%20Intro%20to%20ZK/Exercises.md)
 
-## [Crypto Primitives Module 2](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%201%20-%20Intro%20to%20ZK)
+## [Crypto Primitives Module 2](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%202%20-%20Crypto%20Primitives)
 
-## [Crypto Essentials and Elliptic Curve Cryptography Module 3](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%201%20-%20Intro%20to%20ZK)
+## [Crypto Essentials and Elliptic Curve Cryptography Module 3](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%203%20-%20Crypto%20Essentials%20Elliptic%20Curves)
 
 
 # [How to Test](#how-to-test)
