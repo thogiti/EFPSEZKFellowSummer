@@ -4,6 +4,8 @@
 - [Ethereum Foundation's Privacy Scaling \& Explorations (PSE) ZK Fellow Contributor](#ethereum-foundations-privacy-scaling--explorations-pse-zk-fellow-contributor)
   - [Summary](#summary)
   - [Introduction to ZKP Module 1](#introduction-to-zkp-module-1)
+  - [Crypto Primitives Module 2](#crypto-primitives-module-2)
+  - [Crypto Essentials and Elliptic Curve Cryptography Module 3](#crypto-essentials-and-elliptic-curve-cryptography-module-3)
 - [How to Test](#how-to-test)
 
 ## [Summary](#summary)
@@ -28,6 +30,10 @@ In the module 1, we will learn the concept of Zero Knowledge Proofs (ZKP), how t
 You can find more details at [github.com/thogiti/](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%201%20-%20Intro%20to%20ZK)
 
 You can find some practical hands on learning exercises at [github.com/thogiti/](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%201%20-%20Intro%20to%20ZK/Exercises.md)
+
+## [Crypto Primitives Module 2](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%201%20-%20Intro%20to%20ZK)
+
+## [Crypto Essentials and Elliptic Curve Cryptography Module 3](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%201%20-%20Intro%20to%20ZK)
 
 
 # [How to Test](#how-to-test)
