@@ -127,7 +127,7 @@ cd ../..
 
 ```
 
-Let's understand this script line by line to understand these ZKSNARK operations workflow. 
+Let's walk through this script line by line to understand these ZKSNARK operations workflow. 
 
 - The first line `#!/bin/bash` tells the operating system that this is a bash script, which is a type of program that can run commands in a terminal.
 - The line `cd contracts/circuits` changes the current directory to `contracts/circuits`, which is where the circuit files are stored.
@@ -158,10 +158,37 @@ chmod +x ./scripts/compile-HelloWorld.sh
 
 Now, rerun the script `./scripts/compile-HelloWorld.sh`. We will see below output. I added comments in the output show you the results of different ZKSNARK operations.
 
-![ZKSNARK Operations output 01]((https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%206%20-%20Intro%20to%20Circuits/images/ZKSNARK-Operations-HellowWorld-circuit-01.png))
+![ZKSNARK Operations output 01](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%206%20-%20Intro%20to%20Circuits/images/ZKSNARK-Operations-HellowWorld-circuit-01.png)
 
 
-![ZKSNARK Operations output 02]((https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%206%20-%20Intro%20to%20Circuits/images/ZKSNARK-Operations-HellowWorld-circuit-02.png))
+![ZKSNARK Operations output 02](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%206%20-%20Intro%20to%20Circuits/images/ZKSNARK-Operations-HellowWorld-circuit-02.png)
 
 
+### [Exercises - Trusted Setup]
+Now, let's answer the questions from the Exercises.
+
+**Question** What does the circuit in HelloWorld.circom do?
+
+**Answer:** The circuit in HelloWorld.circom performs a simple arithmetic operation. It takes two input signals as numbers and multiplies them together. The result is the output signal of the circuit.
+
+
+**Question** Lines 7-12 of compile-HelloWorld.sh download a file called powersOfTau28_hez_final_10.ptau for Phase 1 trusted setup. What is a Powers of Tau ceremony? Explain why this is important in the setup of zk-SNARK applications.
+
+**Answer:** A Powers of Tau ceremony is a type of trusted setup ceremony for zk-SNARK applications. A trusted setup ceremony is a process where multiple parties collaborate to generate some public parameters that are needed for creating and verifying proofs. The public parameters are also called a common reference string (CRS). The Powers of Tau ceremony is based on an interactive protocol where each party contributes some randomness to the CRS and keeps their input secret. The final CRS is secure as long as at least one party is honest and does not reveal their input. This is important because the CRS is used to ensure the soundness and privacy of the proofs. If the CRS is compromised, an attacker could create fake proofs or learn some information about the secret inputs of the proofs.
+
+
+**Question** Line 24 of compile-HelloWorld.sh makes a random entropy contribution as a Phase 2 trusted setup. How are Phase 1 and Phase 2 trusted setup ceremonies different from each other?
+
+**Answer:** Phase 1 and Phase 2 trusted setup ceremonies have different purposes and scopes. Phase 1 is a universal ceremony that can be used for any circuit. It generates a large CRS that contains all the possible powers of a fixed element in a finite field. Phase 2 is a circuit-specific ceremony that adapts the CRS from Phase 1 to a particular circuit. It reduces the size of the CRS and adds some circuit-specific information to it.
+
+
+---
+
+# Non-Quadratic Constraints
+
+Non-quadratic constraints are not allowed in circom. However, there are some ways to achieve non-quadratic constraints by using some tricks or techniques. We reduce the original non-quadratic constraints into a set of quadratic of linear constraints using some auxiliary variables.
+
+For example, in the `Multiplier2.circom`, we have multiplication of three input signals. We can reduce this by introducing an auxiliary variable like below.
+
+u <=>= a * b
 
