@@ -332,7 +332,7 @@ cd ../..
 ```
 
 
-1. Try to run `compile-Multiplier3-groth16.sh`. You should encounter an `error[T3001]` with the circuit as-is. Explain what the error means and how it arises.
+2. Try to run `compile-Multiplier3-groth16.sh`. You should encounter an `error[T3001]` with the circuit as-is. Explain what the error means and how it arises.
 
 When we run the script `compile-Multiplier3-groth16.sh`, we get the `error[T3001]` error. This error is related to non-quadratic constraint we had `d <== a * b* c;`. 
 
@@ -383,4 +383,96 @@ component main = Multiplier3();
 
 
 ![Non-quadratic constraint fixed output multiplier3](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/multiplier3-circuit-groth16-build-output-02.png)
+
+---
+
+# [Groth16 and PLONK Protocols]
+
+In the empty `scripts/compile-Multiplier3-plonk.sh`, create a script to compile `circuit/Multiplier3.circom` using PLONK in SnarkJS. Add a `_plonk` suffix to the build folder and the output contract to distinguish the two sets of output.
+
+**Question** You will encounter an error `zkey file is not groth16` if you just change `snarkjs groth16 setup` to `snarkjs plonk setup`. Resolve this error and answer the following question: *How is the process of compiling with PLONK different from compiling with Groth16?*
+
+**Answer** For PLONK, Phase 2 (circuit-specific) contribution is not required. 
+
+Here is the script for the PLONK protocol to build `Multiplier3.circom` circuit.
+
+```circom
+#!/bin/bash
+
+# This script is for creating a Multiplier3 circuit using circom and snarkjs using PLONK protocol
+# It requires circom, snarkjs, and wget to be installed
+# It also requires the powersOfTau28_hez_final_10.ptau file to be downloaded from the hermez website
+# It will generate a Multiplier3 circuit, a verification key, and a solidity verifier contract
+# To run this ZKSNARKS operations script, your working directory shoould be /week1/Q2/
+
+cd contracts/circuits
+
+# Create a new directory for the Multiplier3 circuit
+mkdir Multiplier3_plonk
+
+# Check if the powersOfTau28_hez_final_10.ptau file exists
+if [ -f ./powersOfTau28_hez_final_10.ptau ]; then
+    # If it exists, skip the download step
+    echo "powersOfTau28_hez_final_10.ptau already exists. Skipping."
+else
+    # If it does not exist, download it from the hermez website
+    echo 'Downloading powersOfTau28_hez_final_10.ptau'
+    wget https://hermez.s3-eu-west-1.amazonaws.com/powersOfTau28_hez_final_10.ptau
+fi
+
+# Compile the Multiplier3.circom file using circom
+echo "Compiling Multiplier3.circom..."
+
+# The --r1cs flag generates a rank-1 constraint system file
+# The --wasm flag generates a WebAssembly file
+# The --sym flag generates a symbolic information file
+# The -o flag specifies the output directory
+circom Multiplier3.circom --r1cs --wasm --sym -o Multiplier3_plonk
+
+# Display some information about the generated r1cs file using snarkjs
+snarkjs r1cs info Multiplier3_plonk/Multiplier3.r1cs
+
+# Start a new zkey file and make a contribution using snarkjs and the powersOfTau28_hez_final_10.ptau file
+snarkjs plonk setup Multiplier3_plonk/Multiplier3.r1cs powersOfTau28_hez_final_10.ptau Multiplier3_plonk/circuit_final.zkey
+
+# The --name flag specifies the name of the contributor
+# The -v flag enables verbose mode
+# The -e flag specifies the entropy source for the contribution
+# snarkjs zkey contribute Multiplier3_plonk/circuit_0000.zkey Multiplier3_plonk/circuit_final.zkey --name="1st Contributor Name" -v -e="random text"
+
+# Export the verification key from the final zkey file as a JSON file using snarkjs
+snarkjs zkey export verificationkey Multiplier3_plonk/circuit_final.zkey Multiplier3_plonk/verification_key.json
+
+# Generate a solidity contract for verifying proofs using the final zkey file and snarkjs
+snarkjs zkey export solidityverifier Multiplier3_plonk/circuit_final.zkey ../Multiplier3Verifier.sol
+
+# Go back to the root directory
+cd ../..
+
+
+```
+
+When you run this script, it will successfully build the PLONK based keys for proof, witness, verification and solidity contract.
+
+
+![multiplier3 circuit plonk build output](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/multiplier3-circuit-plonk-build-output-01.png)
+
+
+**Question** What are the practical differences between Groth16 and PLONK? Hint: compare and contrast the resulting contracts and running time of unit tests (see the next question below) from the two protocols.
+
+**Answer** The contract size, gas cost, and verification time of PLONK are all higher than GROTH16 protocol.
+
+
+---
+
+# [Proof Generation, Computing Witness, Verification and Testing]
+
+
+---
+
+# [SnarkJS API for Solidity Call Data Export]
+
+
+
+
 
