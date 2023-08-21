@@ -379,8 +379,8 @@ component main = Multiplier3();
 
 ```
 
-![Non-quadratic constraint fixed output multiplier3](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/multiplier3-circuit-groth16-build-putput-01.png)
+![Non-quadratic constraint fixed output multiplier3](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/multiplier3-circuit-groth16-build-output-01.png)
 
 
-![Non-quadratic constraint fixed output multiplier3](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/multiplier3-circuit-groth16-build-putput-02.png)
+![Non-quadratic constraint fixed output multiplier3](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/multiplier3-circuit-groth16-build-output-02.png)
 
