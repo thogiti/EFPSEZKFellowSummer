@@ -11,7 +11,7 @@ Key topics covered in the exercises include Trusted Setup, Groth16 and PLONK, an
 
 ---
 
-# Trusted Setup
+# [Trusted Setup]
 
 A trusted setup is a process that involves generating some parameters that are used for creating and verifying zero-knowledge proofs. As we have seen, Zero-knowledge proofs are a type of cryptographic technique that allow a prover to convince a verifier that a statement is true, without revealing any information about the statement or the proof. 
 
@@ -23,7 +23,7 @@ A trusted setup is needed for some types of zero-knowledge proofs, such as zk-SN
 
 Therefore, a trusted setup requires a lot of trust and care from the participants and the users of the parameters. There are also some alternatives to trusted setups, such as zk-STARKs, which do not require any setup phase and are more secure and transparent, but also less efficient and more complex.
 
-## Powers of Tau Ceremony
+## [Powers of Tau Ceremony]
 
 **Question:** What is a Powers of Tau ceremony? Explain why this is important in the setup of zk-SNARK applications.
 
@@ -158,10 +158,10 @@ chmod +x ./scripts/compile-HelloWorld.sh
 
 Now, rerun the script `./scripts/compile-HelloWorld.sh`. We will see below output. I added comments in the output show you the results of different ZKSNARK operations.
 
-![ZKSNARK Operations output 01](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%206%20-%20Intro%20to%20Circuits/images/ZKSNARK-Operations-HellowWorld-circuit-01.png)
+![ZKSNARK Operations output 01](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/ZKSNARK-Operations-HellowWorld-circuit-01.png)
 
 
-![ZKSNARK Operations output 02](https://github.com/thogiti/EFPSEZKFellowSummer/blob/main/Module%206%20-%20Intro%20to%20Circuits/images/ZKSNARK-Operations-HellowWorld-circuit-02.png)
+![ZKSNARK Operations output 02](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/ZKSNARK-Operations-HellowWorld-circuit-02.png)
 
 
 ### [Exercises - Trusted Setup]
@@ -184,11 +184,203 @@ Now, let's answer the questions from the Exercises.
 
 ---
 
-# Non-Quadratic Constraints
+# [Non-Quadratic Constraints]
 
 Non-quadratic constraints are not allowed in circom. However, there are some ways to achieve non-quadratic constraints by using some tricks or techniques. We reduce the original non-quadratic constraints into a set of quadratic of linear constraints using some auxiliary variables.
 
-For example, in the `Multiplier2.circom`, we have multiplication of three input signals. We can reduce this by introducing an auxiliary variable like below.
+For example, in the `Multiplier3.circom`, we have multiplication of three input signals. 
 
-u <=>= a * b
+```circom 
+pragma circom 2.1.4;
+
+// [assignment] Modify the circuit below to perform a multiplication of three signals
+
+template Multiplier3 () {  
+
+   // Declaration of signals.  
+   signal input a;  
+   signal input b;
+   signal input c;
+   signal output d;  
+
+   // Constraints.  
+   d <== a * b * c;  
+}
+
+component main = Multiplier3();
+
+```
+
+If we compile the circuit `Multiplier3.circom`, we will get the following error. Let's compile it and see what we get:
+
+```shell 
+circom ./contracts/circuits/Multiplier3.circom --r1cs --wasm --sym
+```
+
+![Non-quadratic constraint error multiplier3](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/non-quadratic-constraint-error-multiplier3.png)
+
+
+We can fix this by introducing an auxiliary variable like below.
+
+```circom
+u <== a * b;
+d <== u * c;
+```
+
+
+Our updated circuit looks like below:
+
+```circom 
+pragma circom 2.1.4;
+
+// Modified circuit to perform a multiplication of three signals
+template Multiplier3 () {  
+
+   // Declaration of signals.  
+   // The input signals are a, b, and c, which are numbers
+   // The output signal is d, which is also a number
+   signal input a;  
+   signal input b;
+   signal input c;
+   signal output d;  
+
+   signal u;
+
+   // These constraints ensure that the output signal d is equal to the product of the three input signals a, b, and c
+   u <== a * b;
+   d <== u * c;
+}
+
+
+// The main component instantiates the circuit template and assigns values to the signals
+component main = Multiplier3();
+```
+
+Now we can successfully compile this updated circuit `Multiplier3.circom`.
+
+```circom 
+circom ./contracts/circuits/Multiplier3.circom --r1cs --wasm --sym
+
+```
+
+We get the following output:
+
+![Non-quadratic constraint fixed output multiplier3](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/non-quadratic-constraint-fixed-output-multiplier3.png)
+
+
+### [Exercises - Non-Quadratic Constraints]
+
+
+1. In the empty `scripts/compile-Multiplier3-groth16.sh`, create a script to compile `contracts/circuits/Multiplier3.circom` and create a verifier contract modelled after `compile-HelloWorld.sh`.
+
+First, let's update the script `compile-Multiplier3-groth16.sh` that will perform all the ZKSNARK operations for `Multiplier3.circom` circuit. Then we run the script and check the output.
+
+```shell
+#!/bin/bash
+
+# This script is for creating a Multiplier3 circuit using circom and snarkjs
+# It requires circom, snarkjs, and wget to be installed
+# It also requires the powersOfTau28_hez_final_10.ptau file to be downloaded from the hermez website
+# It will generate a Multiplier3 circuit, a verification key, and a solidity verifier contract
+# To run this ZKSNARKS operations script, your working directory shoould be /week1/Q2/
+
+cd contracts/circuits
+
+# Create a new directory for the Multiplier3 circuit
+mkdir Multiplier3
+
+# Check if the powersOfTau28_hez_final_10.ptau file exists
+if [ -f ./powersOfTau28_hez_final_10.ptau ]; then
+    # If it exists, skip the download step
+    echo "powersOfTau28_hez_final_10.ptau already exists. Skipping."
+else
+    # If it does not exist, download it from the hermez website
+    echo 'Downloading powersOfTau28_hez_final_10.ptau'
+    wget https://hermez.s3-eu-west-1.amazonaws.com/powersOfTau28_hez_final_10.ptau
+fi
+
+# Compile the Multiplier3.circom file using circom
+echo "Compiling Multiplier3.circom..."
+
+# The --r1cs flag generates a rank-1 constraint system file
+# The --wasm flag generates a WebAssembly file
+# The --sym flag generates a symbolic information file
+# The -o flag specifies the output directory
+circom Multiplier3.circom --r1cs --wasm --sym -o Multiplier3
+
+# Display some information about the generated r1cs file using snarkjs
+snarkjs r1cs info Multiplier3/Multiplier3.r1cs
+
+# Start a new zkey file and make a contribution using snarkjs and the powersOfTau28_hez_final_10.ptau file
+snarkjs groth16 setup Multiplier3/Multiplier3.r1cs powersOfTau28_hez_final_10.ptau Multiplier3/circuit_0000.zkey
+
+# The --name flag specifies the name of the contributor
+# The -v flag enables verbose mode
+# The -e flag specifies the entropy source for the contribution
+snarkjs zkey contribute Multiplier3/circuit_0000.zkey Multiplier3/circuit_final.zkey --name="1st Contributor Name" -v -e="random text"
+
+# Export the verification key from the final zkey file as a JSON file using snarkjs
+snarkjs zkey export verificationkey Multiplier3/circuit_final.zkey Multiplier3/verification_key.json
+
+# Generate a solidity contract for verifying proofs using the final zkey file and snarkjs
+snarkjs zkey export solidityverifier Multiplier3/circuit_final.zkey ../Multiplier3Verifier.sol
+
+# Go back to the root directory
+cd ../..
+
+
+```
+
+
+1. Try to run `compile-Multiplier3-groth16.sh`. You should encounter an `error[T3001]` with the circuit as-is. Explain what the error means and how it arises.
+
+When we run the script `compile-Multiplier3-groth16.sh`, we get the `error[T3001]` error. This error is related to non-quadratic constraint we had `d <== a * b* c;`. 
+
+
+![Non-quadratic constraint error output multiplier3](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/non-quadratic-multiplier3-circuit-groth16-build-error.png)
+
+
+We can fix this by using an auxiliary signal as shown below:
+
+```circom
+u <== a * b;
+d <== u * c;
+```
+
+
+3. Modify `Multiplier3.circom` to perform a multiplication of three input signals under the restrictions of circom.
+
+Now, the script `compile-Multiplier3-groth16.sh` performs the ZKSNARK operations to build the updated circuit `Multiplier3.circom`. It also creates a Groth16 trusted setup, keys for proof, witness and verification, and the solidity smart contract `Multiplier3Verifier.sol`. All these steps are completed successfully in the terminal.
+
+
+```circom
+pragma circom 2.1.4;
+
+// Modified circuit to perform a multiplication of three signals
+template Multiplier3 () {  
+
+   // Declaration of signals.  
+   // The input signals are a, b, and c, which are numbers
+   // The output signal is d, which is also a number
+   signal input a;  
+   signal input b;
+   signal input c;
+   signal output d;  
+
+   signal u;
+
+   // These constraints ensure that the output signal d is equal to the product of the three input signals a, b, and c
+   u <== a * b;
+   d <== a * b * c;
+}
+
+// The main component instantiates the circuit template and assigns values to the signals
+component main = Multiplier3();
+
+```
+
+![Non-quadratic constraint fixed output multiplier3](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/multiplier3-circuit-groth16-build-putput-01.png)
+
+
+![Non-quadratic constraint fixed output multiplier3](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/multiplier3-circuit-groth16-build-putput-02.png)
 
