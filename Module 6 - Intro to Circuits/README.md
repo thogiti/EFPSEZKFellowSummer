@@ -394,7 +394,7 @@ In the empty `scripts/compile-Multiplier3-plonk.sh`, create a script to compile 
 
 **Answer** For PLONK, Phase 2 (circuit-specific) contribution is not required. 
 
-Here is the script for the PLONK protocol to build `Multiplier3.circom` circuit.
+Here is the script `compile-Multiplier3-plonk.sh` for the PLONK protocol to build `Multiplier3.circom` circuit.
 
 ```circom
 #!/bin/bash
@@ -466,6 +466,80 @@ When you run this script, it will successfully build the PLONK based keys for pr
 ---
 
 # [Proof Generation, Computing Witness, Verification and Testing]
+
+Let's do some testing on our circuits. 
+
+There is no direct way to do unit testing Circom circuits within Circom, as circom is only a compiler that outputs the circuit representation and the constraints. However, you can use external tools such as `snarkjs` or `circom-helper` to test your circuits and generate proofs. These tools allow you to compile, calculate witnesses, verify proofs, and debug your circuits using the circom language. 
+
+We can also use `nodejs` do unit testing, checking proofs, generating witness, etc. 
+
+First, let us use `snarkjs` to do some basic ZKSNARK operations like verifying proofs, computing witness, etc. Then we can use `nodejs` to do more detailed unit testing of teh circuits and verifier smart contracts.
+
+
+Let's create the input file for `HelloWorld` circuit.
+
+```shell
+cd contracts/circuits/HelloWorld
+
+# Create input file
+echo "Create inputs for HelloWorld circuit in HelloWorld_input.json"
+echo "{\"a\": \"3\", \"b\": \"11\"}" > ./HelloWorld_input.json
+
+```
+
+Now, calculate the witness for the circuit.
+
+```shell
+# Calculate witness 
+echo "Generate witness from HelloWorld_input.json, using HelloWorld.wasm, saving to HelloWorld_witness.wtns"
+gtime -f "[PROFILE] Witness generation time: %E" \
+    node HelloWorld_js/generate_witness.js HelloWorld_js/HelloWorld.wasm ./HelloWorld_input.json \
+        HelloWorld_js/HelloWorld_witness.wtns
+
+```
+
+Then, create proof of our witness.
+
+```shell
+# Create a proof for our witness
+echo "Starting proving that we have a witness (our HelloWorld_input.json in form of HelloWorld_witness.wtn)"
+echo "Proof and public signals are saved to HelloWorld_proof.json and HelloWorld_public.json"
+gtime -f "[PROFILE] Prove time: %E" \
+    snarkjs groth16 prove ./circuit_final.zkey HelloWorld_js/HelloWorld_witness.wtns \
+        HelloWorld_js/HelloWorld_proof.json \
+        HelloWorld_js/HelloWorld_public.json
+
+```
+
+Then, finally, verify our proof.
+
+```shell
+# Verify our proof
+echo "Checking proof of knowledge of private inputs for ${CIRCUIT_NAME}_public.json using ${CIRCUIT_NAME}_verification_key.json"
+gtime -f "[PROFILE] Verify time: %E" \
+    snarkjs groth16 verify ./verification_key.json \
+        HelloWorld_js/HelloWorld_public.json \
+        HelloWorld_js/HelloWorld_proof.json
+
+```
+
+Let's calculate some benchmarks statistics (performance in time and size of the various keys).
+
+```shell
+# Check the sizes and performance of proof, verification and witness files
+echo "Output sizes of client's side files":
+echo "[PROFILE]" `du -kh "HelloWorld_js/HelloWorld.wasm"`
+echo "[PROFILE]" `du -kh "HelloWorld_js/HelloWorld_witness.wtns"`
+
+
+```
+
+We can combine the above steps and add them to our ZKSNARKS operations workflow script `compile-HelloWorld.sh`.
+
+When we rerun the script, `compile-HelloWorld.sh`, we will see all the operations of our `HellowWorld.circom` circuit.
+
+![verify and test HelloWorld circuit](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/verify-test-HelloWorld-circuit-01.png)
+
 
 
 ---

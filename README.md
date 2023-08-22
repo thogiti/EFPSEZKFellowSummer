@@ -6,6 +6,9 @@
   - [Introduction to ZKP Module 1](#introduction-to-zkp-module-1)
   - [Crypto Primitives Module 2](#crypto-primitives-module-2)
   - [Crypto Essentials and Elliptic Curve Cryptography Module 3](#crypto-essentials-and-elliptic-curve-cryptography-module-3)
+  - [ZKSNARKS Module 4](#zksnarks-module-4)
+  - [PSE Protocols Module 5](#pse-protocols-module-5)
+  - [Introduction to Circuits Module 6](#introduction-to-circuits-module-6)
 - [How to Test](#how-to-test)
 
 ## [Summary](#summary)
@@ -33,7 +36,17 @@ You can find some practical hands on learning exercises at [github.com/thogiti/]
 
 ## [Crypto Primitives Module 2](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%202%20-%20Crypto%20Primitives)
 
+
 ## [Crypto Essentials and Elliptic Curve Cryptography Module 3](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%203%20-%20Crypto%20Essentials%20Elliptic%20Curves)
+
+
+## [ZKSNARKS Module 4](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%204%20-%20zkSNARKs)
+
+
+## [PSE Protocols Module 5](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%205%20-%20PSE%20Protocols)
+
+
+## [Introduction to Circuits Module 6](https://github.com/thogiti/EFPSEZKFellowSummer/tree/main/Module%206%20-%20Intro%20to%20Circuits)
 
 
 # [How to Test](#how-to-test)
