@@ -515,7 +515,7 @@ Then, finally, verify our proof.
 
 ```shell
 # Verify our proof
-echo "Checking proof of knowledge of private inputs for ${CIRCUIT_NAME}_public.json using ${CIRCUIT_NAME}_verification_key.json"
+echo "Checking proof of knowledge of private inputs for HelloWorld_public.json using HelloWorld_verification_key.json"
 gtime -f "[PROFILE] Verify time: %E" \
     snarkjs groth16 verify ./verification_key.json \
         HelloWorld_js/HelloWorld_public.json \
@@ -541,10 +541,25 @@ When we rerun the script, `compile-HelloWorld.sh`, we will see all the operation
 ![verify and test HelloWorld circuit](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/verify-test-HelloWorld-circuit-01.png)
 
 
+We can similarly update the script for `Multiplier3.circom` circuit for both GROTH16 and PLONK ZKSNARKs operations.
+
+When we run the script `compile-Multiplier3-groth16.sh`, we can see the successful verification, witness generation and test.
+
+![verify and test Multiplier3 GROTH16 circuit](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/verify-test-Multiplier3-groth16-circuit-01.png)
+
+
+When we run the script `compile-Multiplier3-groth16.sh`, we can see the successful verification, witness generation and test.
+
+![verify and test Multiplier3 PLONK circuit](https://raw.githubusercontent.com/thogiti/EFPSEZKFellowSummer/main/Module%206%20-%20Intro%20to%20Circuits/images/verify-test-Multiplier3-plonk-circuit-02.png)
+
+
+Now, let's do the verifying and testing using `nodejs` API. 
+
+
 
 ---
 
-# [SnarkJS API for Solidity Call Data Export]
+
 
 
 
