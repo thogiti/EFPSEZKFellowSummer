@@ -11,3 +11,18 @@ Try running some of the following tasks:
 . scripts/compile-HelloWorld.sh
 node scripts/bump-solidity.js && npx hardhat test
 ```
+
+
+First run these ZKSNARK operations to build the necessary files.
+
+```shell 
+./scripts/compile-HellowWorld.sh
+
+./scripts/compile-Multiplier3-groth16.sh
+
+./scripts/compile-Multiplier3-plonk.sh
+
+```
+
+Then run the nodejs test file `npm run test`.
+
